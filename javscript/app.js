@@ -1,6 +1,8 @@
 $(document).ready(function () { 
 
     const triviaTitle = $("<h1>");
+    let modal = document.getElementById("questions");
+    let modalT = document.getElementById("timer");
     $(triviaTitle).text("90's Movie Trivia");
     $("#gametitle").append(triviaTitle);
     //directions
@@ -10,44 +12,52 @@ $(document).ready(function () {
     //start button
     let startButton = $("<h2>").text("PLAY NOW");
     $("#button").append(startButton);
+    $("#button").click(function(){
+        $("#button").hide("#button");
+        modal.style.display = "block";
+        modalT.style.display = "block";
+      });
     //make timer
     let IntervalId; //set time for game
     let timeRunning = false;
     let timer = 10;
     //Let variables
+    $(document).ready(function(){
+        $(":button").css("background-color", "red");
+      });
     const triviaGame = [{
         question: "What year was Wayne's World released?",
-        choices: ["1992", "1993", "1995", "1990"],
+        choices: ["A. 1992", "B. 1993", "C. 1995", "D. 1990"],
         answer: 1,
     }, {
         question: "What was the name of Gary Oldman's character in The Fifth Element? ",
-        choices: ["Zoob", "Zord", "Korb", "Zorg"],
+        choices: ["A. Zoob", "B. Zord", "C. Korb", "D.  Zorg"],
         answer: 4,
     }, {
         question: "All of these Jim Carrey movies were released in 1994, EXCEPT for:",
-        choices: ["Dumb and Dumber", "Batman Forever", "The Mask", "Ace Ventura: Pet Detective"],
+        choices: ["A.  Dumb and Dumber", "B.  Batman Forever", "C.  The Mask", "D.  Ace Ventura: Pet Detective"],
         answer: 2,
     }, {
         question: "Brandon Lee was accidentally killed in the filming of which 1994 movie?",
-        choices: ["Blown Away", "Stargate", "The Crow", "True Lies"],
+        choices: ["A.  Blown Away", "B.  Stargate", "C.  The Crow", "D.  True Lies"],
         answer: 3,
     }, {
         question: "How late is 'Empire Records' open until?",
-        choices: ["10:00pm", "Whenever they feel like closing", "Midnight", "They never close"],
+        choices: ["A.  10:00pm", "B.  Whenever they feel like closing", "C.  Midnight", "D.  They never close"],
         answer: 3,
     }, {
         question: "Which actor recieved an Academy Award for their role in the movie Goodfellas?",
-        choices: ["Ray Liotta", "Robert De Niro", "Al Pacino", "Joe Pesci"],
+        choices: ["A.  Ray Liotta", "B.  Robert De Niro", "C.  Al Pacino", "D.  Joe Pesci"],
         answer: 4,
     }, {
         question: "Which of these 90's Disney movies came out first?",
-        choices: ["Aladdin", "Lion King", "Beauty and the Beast", "The Mighty Ducks"],
+        choices: ["A.  Aladdin", "B.  Lion King", "C.  Beauty and the Beast", "D.  The Mighty Ducks"],
         answer: 1,
     }]
     let correctAnswer = 0; 
     let wrongAnswer = 0; 
     let userAnswer = "";//blank
-    let noAnswer = wrongAnswer;
+    let noAnswer = 0;
     let tempArray = [];
     let select; //user selections
     let index = 0; //for answers array
